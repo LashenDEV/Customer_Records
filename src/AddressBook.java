@@ -10,6 +10,15 @@ class AddressBook {
         loadPersons();
     }
 
+    void viewEntries() {
+        String output = "";
+        for (int i = 0; i < persons.size(); i++) {
+            PersonInfo p = (PersonInfo) persons.get(i);
+            output += "Name: " + p.name + "  Address: " + p.address + "  Phone no: " + p.phoneNumber + "\n";
+        }
+        JOptionPane.showMessageDialog(null, output);
+    }
+
     //adding a person
     void addPerson() {
         String name = JOptionPane.showInputDialog("Enter name:");

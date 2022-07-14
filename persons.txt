@@ -1,1 +1,5 @@
 Lashen,Karapitiya,432432432
+Mad,Karapitiya,432432432
+Path,Karapitiya,432432432
+Kas,Karapitiya,432432432
+Mas,Karapitiya,432432432
