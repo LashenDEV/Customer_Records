@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        AddressBook ab = new AddressBook();
+        RecordBook ab = new RecordBook();
         String input, s;
         int ch, sel;
 
@@ -15,7 +15,9 @@ public class Main {
 
             switch (ch) {
                 case 1 -> ab.addPerson();
-                case 2 -> ab.viewEntries();
+                case 2 -> {
+                    ab.viewEntries();
+                }
                 case 3 -> {
                     s = JOptionPane.showInputDialog("Enter name to search:");
                     ab.searchPerson(s);
@@ -26,6 +28,17 @@ public class Main {
                 }
                 case 5 -> {
                     ab.savePersons();
+                    switch (sel) {
+                        case 1:
+                            ab.insertionSort();
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            System.exit(0);
+                    }
                     System.exit(0);
                 }
             }
