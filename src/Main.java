@@ -6,11 +6,13 @@ public class Main {
         String input, s;
         int ch, sel;
 
-        input = JOptionPane.showInputDialog("Enter 1 to Insertion Sort\n Enter 2 to Bubble Sort\n Enter 3 to Quick Sort\n Enter 4 to exit");
+        input = JOptionPane.showInputDialog(
+                "Enter 1 to Insertion Sort\n Enter 2 to Bubble Sort\n Enter 3 to Seletion Sort\n Enter 4 to exit");
         sel = Integer.parseInt(input);
 
         while (true) {
-            input = JOptionPane.showInputDialog("Enter 1 to add\n Enter 2 to View All Entries\n Enter 3 to Search\n Enter 4 to delete\n Enter 5 to exit");
+            input = JOptionPane.showInputDialog(
+                    "Enter 1 to add\n Enter 2 to View All Entries\n Enter 3 to Search\n Enter 4 to delete\n Enter 5 to exit");
             ch = Integer.parseInt(input);
 
             switch (ch) {
@@ -33,8 +35,10 @@ public class Main {
                             ab.insertionSort();
                             break;
                         case 2:
+                            ab.bubbleSort();
                             break;
                         case 3:
+                            ab.selectionSort();
                             break;
                         case 4:
                             System.exit(0);
