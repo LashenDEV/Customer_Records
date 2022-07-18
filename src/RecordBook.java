@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 class RecordBook {
     ArrayList persons;
+    private String qty;
 
     RecordBook() {
         persons = new ArrayList();
@@ -15,7 +16,7 @@ class RecordBook {
         for (int i = 0; i < persons.size(); i++) {
             PersonInfo p = (PersonInfo) persons.get(i);
             output += "Reg No: " + p.regNo + "  Name: " + p.name + "  Address: " + p.address + "  Phone no: "
-                    + p.phoneNumber + "\n";
+                    + p.phoneNumber + " Quantitie: " + p.quantitie + " Total Amount: " + p.totalAmount +"\n";
         }
         JOptionPane.showMessageDialog(null, output);
     }
@@ -27,8 +28,12 @@ class RecordBook {
         String name = JOptionPane.showInputDialog("Enter name:");
         String add = JOptionPane.showInputDialog("Enter address:");
         String pNum = JOptionPane.showInputDialog("Enter phone number:");
+        String qty = JOptionPane.showInputDialog("Enter Quantitie:");
+        int quantitie = Integer.parseInt(qty);
+        String tAmount = JOptionPane.showInputDialog("Enter Total Amount:");
+        int totalAmount = Integer.parseInt(tAmount);
         // Creating Person info object
-        PersonInfo p = new PersonInfo(regNo, name, add, pNum);
+        PersonInfo p = new PersonInfo(regNo, name, add, pNum, quantitie, totalAmount);
 
         persons.add(p);
     }
@@ -62,7 +67,7 @@ class RecordBook {
             PrintWriter pw = new PrintWriter(fw);
             for (int i = 0; i < persons.size(); i++) {
                 p = (PersonInfo) persons.get(i);
-                line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber;
+                line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                 // write line to persons.text
                 pw.println(line);
             }
@@ -95,7 +100,7 @@ class RecordBook {
                 for (int i = 0; i < persons.size(); i++) {
                     p = (PersonInfo) persons.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -131,7 +136,7 @@ class RecordBook {
                 for (int i = 0; i < persons.size(); i++) {
                     p = (PersonInfo) persons.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -167,7 +172,7 @@ class RecordBook {
                 for (int i = 0; i < persons.size(); i++) {
                     p = (PersonInfo) persons.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -186,7 +191,7 @@ class RecordBook {
     void loadPersons() {
         String tokens[] = null;
         String name, add, ph;
-        String value;
+        String value, tAmount;
         try {
             FileReader fr = new FileReader("sorted_persons.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -197,8 +202,12 @@ class RecordBook {
                 name = tokens[1];
                 add = tokens[2];
                 ph = tokens[3];
+                qty = tokens[4];
+                tAmount = tokens[5];
                 int regNo = Integer.parseInt(value);
-                PersonInfo p = new PersonInfo(regNo, name, add, ph);
+                int totalAmount=Integer.parseInt(tAmount);
+                int quantitie =Integer.parseInt(qty);
+                PersonInfo p = new PersonInfo(regNo, name, add, ph, quantitie, totalAmount);
                 persons.add(p);
                 line = br.readLine();
             }
