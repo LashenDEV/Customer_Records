@@ -8,7 +8,7 @@ class RecordBook {
 
     RecordBook() {
         customers = new ArrayList();
-        loadPersons();
+        loadCustomers();
     }
 
     void viewEntries() {
@@ -21,8 +21,8 @@ class RecordBook {
         JOptionPane.showMessageDialog(null, output);
     }
 
-    // adding a person
-    void addPerson() {
+    // adding a Customer
+    void addCustomer() {
         String value = JOptionPane.showInputDialog("Enter Reg No:");
         int regNo = Integer.parseInt(value);
         String name = JOptionPane.showInputDialog("Enter name:");
@@ -32,14 +32,14 @@ class RecordBook {
         int quantitie = Integer.parseInt(qty);
         String tAmount = JOptionPane.showInputDialog("Enter Total Amount:");
         int totalAmount = Integer.parseInt(tAmount);
-        // Creating Person info object
+        // Creating Customer info object
         CustomerInfo p = new CustomerInfo(regNo, name, add, pNum, quantitie, totalAmount);
 
         customers.add(p);
     }
 
-    // searching for a person
-    void searchPerson(String n) {
+    // searching for a Customer
+    void searchCustomer(String n) {
         for (int i = 0; i < customers.size(); i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
             if (n.equals(p.name)) {
@@ -48,8 +48,8 @@ class RecordBook {
         }
     }
 
-    // update for a person
-    void updatePerson(Integer n) {
+    // update for a Customer
+    void updateCustomer(Integer n) {
         String input, name, address, phoneno, qty, amount;
         int sel;
         for (int i = 0; i < customers.size(); i++) {
@@ -57,7 +57,7 @@ class RecordBook {
             System.out.println(n);
             if (n.equals(p.regNo)) {
                 input = JOptionPane.showInputDialog(
-                        "Enter 1 to change your name\n Enter 2 to change your Address\n Enter 3 to change your Phone No\n Enter 4 to change your Quntitie\n Enter 5 to change Total Amount");
+                        "Enter 1 to change your name\nEnter 2 to change your Address\nEnter 3 to change your Phone No\nEnter 4 to change your Quntitie\nEnter 5 to change Total Amount");
                 sel = Integer.parseInt(input);
 
                 switch (sel) {
@@ -91,8 +91,8 @@ class RecordBook {
         }
     }
 
-    // deleting a person
-    void deletePerson(String n) {
+    // deleting a Customer
+    void deleteCustomer(String n) {
         for (int i = 0; i < customers.size(); i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
             if (n.equals(p.name)) {
@@ -101,8 +101,8 @@ class RecordBook {
         }
     }
 
-    // saving person record
-    void savePersons() {
+    // saving Customer record
+    void saveCustomers() {
         try {
             CustomerInfo p;
             String line;
@@ -420,8 +420,8 @@ class RecordBook {
 
     }
 
-    // loading person record from text file
-    void loadPersons() {
+    // loading Customer record from text file
+    void loadCustomers() {
         String tokens[] = null;
         String name, add, ph;
         String value, tAmount;
