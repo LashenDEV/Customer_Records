@@ -48,6 +48,49 @@ class RecordBook {
         }
     }
 
+    // update for a person
+    void updatePerson(Integer n) {
+        String input, name, address, phoneno, qty, amount;
+        int sel;
+        for (int i = 0; i < persons.size(); i++) {
+            PersonInfo p = (PersonInfo) persons.get(i);
+            System.out.println(n);
+            if (n.equals(p.regNo)) {
+                input = JOptionPane.showInputDialog(
+                    "Enter 1 to change your name\n Enter 2 to change your Address\n Enter 3 to change your Phone No\n Enter 4 to change your Quntitie\n Enter 5 to change Total Amount");
+            sel = Integer.parseInt(input);
+
+            switch (sel) {
+                case 1:
+                    name = JOptionPane.showInputDialog("change your name : ");
+                    p.name = name;
+                    p.display();
+                    break;
+                case 2:
+                    address = JOptionPane.showInputDialog("change your Address : ");
+                    p.address = address;
+                    p.display();
+                    break;
+                case 3:
+                    phoneno = JOptionPane.showInputDialog("change your PhoneNo : ");
+                    p.phoneNumber = phoneno;
+                    p.display();
+                    break;
+                case 4:
+                    qty = JOptionPane.showInputDialog("change your Quntitie : ");
+                    p.quantitie = Integer.parseInt(qty);
+                    p.display();
+                    break;
+                case 5:
+                    amount = JOptionPane.showInputDialog("change your Total Amount : ");
+                    p.totalAmount = Integer.parseInt(amount);
+                    p.display();
+                    break;
+            }
+        }
+    }
+    }
+
     // deleting a person
     void deletePerson(String n) {
         for (int i = 0; i < persons.size(); i++) {
