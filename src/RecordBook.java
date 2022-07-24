@@ -15,8 +15,7 @@ class RecordBook {
         String output = "";
         for (int i = 0; i < customers.size(); i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
-            output += "Reg No: " + p.regNo + "  Name: " + p.name + "  Address: " + p.address + "  Phone no: "
-                    + p.phoneNumber + " Quantitie: " + p.quantitie + " Total Amount: " + p.totalAmount + "\n";
+            output += "Reg No: " + p.regNo + "  Name: " + p.name + "  Address: " + p.address + "  Phone no: " + p.phoneNumber + " Quantitie: " + p.quantitie + " Total Amount: " + p.totalAmount + "\n";
         }
         JOptionPane.showMessageDialog(null, output);
     }
@@ -25,6 +24,14 @@ class RecordBook {
     void addCustomer() {
         String value = JOptionPane.showInputDialog("Enter Reg No:");
         int regNo = Integer.parseInt(value);
+        for (int i = 0; i < customers.size(); i++) {
+            CustomerInfo p = (CustomerInfo) customers.get(i);
+            while (regNo == p.regNo) {
+                value = JOptionPane.showInputDialog("Enter Reg No:");
+                regNo = Integer.parseInt(value);
+            }
+        }
+
         String name = JOptionPane.showInputDialog("Enter name:");
         String add = JOptionPane.showInputDialog("Enter address:");
         String pNum = JOptionPane.showInputDialog("Enter phone number:");
@@ -54,10 +61,8 @@ class RecordBook {
         int sel;
         for (int i = 0; i < customers.size(); i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
-            System.out.println(n);
             if (n.equals(p.regNo)) {
-                input = JOptionPane.showInputDialog(
-                        "Enter 1 to change your name\nEnter 2 to change your Address\nEnter 3 to change your Phone No\nEnter 4 to change your Quntitie\nEnter 5 to change Total Amount");
+                input = JOptionPane.showInputDialog("Enter 1 to change your name\nEnter 2 to change your Address\nEnter 3 to change your Phone No\nEnter 4 to change your Quntitie\nEnter 5 to change Total Amount");
                 sel = Integer.parseInt(input);
 
                 switch (sel) {
@@ -110,8 +115,7 @@ class RecordBook {
             PrintWriter pw = new PrintWriter(fw);
             for (int i = 0; i < customers.size(); i++) {
                 p = (CustomerInfo) customers.get(i);
-                line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                        + p.totalAmount;
+                line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                 // write line to customers.text
                 pw.println(line);
             }
@@ -144,8 +148,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -175,8 +178,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_qty[j] == p.quantitie) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -206,8 +208,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_totalamounts[j] == p.totalAmount) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -243,8 +244,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -274,8 +274,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_qty[j] == p.quantitie) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -305,8 +304,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_totalamounts[j] == p.totalAmount) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -342,8 +340,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -373,8 +370,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_qty[j] == p.quantitie) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -404,8 +400,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_totalamounts[j] == p.totalAmount) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + ","
-                                + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
