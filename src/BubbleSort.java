@@ -15,6 +15,5 @@ public class BubbleSort{
                  }  //for loop end
          }//for loop end  
   return arr;
-    }  
-    
+    }
 }  

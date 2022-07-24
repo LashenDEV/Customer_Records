@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 class RecordBook {
     ArrayList customers;
-    private String qty;
 
     RecordBook() {
         customers = new ArrayList();
@@ -15,7 +14,7 @@ class RecordBook {
         String output = "";
         for (int i = 0; i < customers.size(); i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
-            output += "Reg No: " + p.regNo + "  Name: " + p.name + "  Address: " + p.address + "  Phone no: " + p.phoneNumber + " Quantitie: " + p.quantitie + " Total Amount: " + p.totalAmount + "\n";
+            output += "Reg No: " + p.regNo + "  Name: " + p.name + "  Address: " + p.address + "  Phone no: " + p.phoneNumber + " Quantitie: " + p.quantity + " Total Amount: " + p.totalAmount + "\n";
         }
         JOptionPane.showMessageDialog(null, output);
     }
@@ -35,21 +34,21 @@ class RecordBook {
         String name = JOptionPane.showInputDialog("Enter name:");
         String add = JOptionPane.showInputDialog("Enter address:");
         String pNum = JOptionPane.showInputDialog("Enter phone number:");
-        String qty = JOptionPane.showInputDialog("Enter Quantitie:");
-        int quantitie = Integer.parseInt(qty);
+        String qty = JOptionPane.showInputDialog("Enter Quantity:");
+        int quantity = Integer.parseInt(qty);
         String tAmount = JOptionPane.showInputDialog("Enter Total Amount:");
         int totalAmount = Integer.parseInt(tAmount);
         // Creating Customer info object
-        CustomerInfo p = new CustomerInfo(regNo, name, add, pNum, quantitie, totalAmount);
+        CustomerInfo p = new CustomerInfo(regNo, name, add, pNum, quantity, totalAmount);
 
         customers.add(p);
     }
 
     // searching for a Customer
-    void searchCustomer(String n) {
+    void searchCustomer(Integer n) {
         for (int i = 0; i < customers.size(); i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
-            if (n.equals(p.name)) {
+            if (n.equals(p.regNo)) {
                 p.display();
             }
         }
@@ -62,7 +61,7 @@ class RecordBook {
         for (int i = 0; i < customers.size(); i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
             if (n.equals(p.regNo)) {
-                input = JOptionPane.showInputDialog("Enter 1 to change your name\nEnter 2 to change your Address\nEnter 3 to change your Phone No\nEnter 4 to change your Quntitie\nEnter 5 to change Total Amount");
+                input = JOptionPane.showInputDialog("Enter 1 to change your name\nEnter 2 to change your Address\nEnter 3 to change your Phone No\nEnter 4 to change your Quntitie\nEnter 5 to change Total Amount\nEnter 6 to Main menu");
                 sel = Integer.parseInt(input);
 
                 switch (sel) {
@@ -83,7 +82,7 @@ class RecordBook {
                         break;
                     case 4:
                         qty = JOptionPane.showInputDialog("change your Quntitie : ");
-                        p.quantitie = Integer.parseInt(qty);
+                        p.quantity = Integer.parseInt(qty);
                         p.display();
                         break;
                     case 5:
@@ -91,16 +90,18 @@ class RecordBook {
                         p.totalAmount = Integer.parseInt(amount);
                         p.display();
                         break;
+                    case 6:
+                        break;
                 }
             }
         }
     }
 
     // deleting a Customer
-    void deleteCustomer(String n) {
+    void deleteCustomer(Integer n) {
         for (int i = 0; i < customers.size(); i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
-            if (n.equals(p.name)) {
+            if (n.equals(p.regNo)) {
                 customers.remove(i);
             }
         }
@@ -115,7 +116,7 @@ class RecordBook {
             PrintWriter pw = new PrintWriter(fw);
             for (int i = 0; i < customers.size(); i++) {
                 p = (CustomerInfo) customers.get(i);
-                line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                 // write line to customers.text
                 pw.println(line);
             }
@@ -148,7 +149,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -164,7 +165,7 @@ class RecordBook {
         int[] quantities = new int[customers.size()];
         for (int i = 0; i < quantities.length; i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
-            quantities[i] = p.quantitie;
+            quantities[i] = p.quantity;
         }
 
         int[] sorted_list_qty = is.sort(quantities);
@@ -177,8 +178,8 @@ class RecordBook {
             for (int j = 0; j < customers.size(); j++) {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
-                    if (sorted_list_qty[j] == p.quantitie) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                    if (sorted_list_qty[j] == p.quantity) {
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -208,7 +209,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_totalamounts[j] == p.totalAmount) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -244,7 +245,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -260,7 +261,7 @@ class RecordBook {
         int[] quantities = new int[customers.size()];
         for (int i = 0; i < quantities.length; i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
-            quantities[i] = p.quantitie;
+            quantities[i] = p.quantity;
         }
 
         int[] sorted_list_qty = bs.sort(quantities);
@@ -273,8 +274,8 @@ class RecordBook {
             for (int j = 0; j < customers.size(); j++) {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
-                    if (sorted_list_qty[j] == p.quantitie) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                    if (sorted_list_qty[j] == p.quantity) {
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -304,7 +305,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_totalamounts[j] == p.totalAmount) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -340,7 +341,7 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list[j] == p.regNo) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -356,7 +357,7 @@ class RecordBook {
         int[] quantities = new int[customers.size()];
         for (int i = 0; i < quantities.length; i++) {
             CustomerInfo p = (CustomerInfo) customers.get(i);
-            quantities[i] = p.quantitie;
+            quantities[i] = p.quantity;
         }
 
         int[] sorted_list_qty = ss.sort(quantities);
@@ -369,8 +370,8 @@ class RecordBook {
             for (int j = 0; j < customers.size(); j++) {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
-                    if (sorted_list_qty[j] == p.quantitie) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                    if (sorted_list_qty[j] == p.quantity) {
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
@@ -400,11 +401,10 @@ class RecordBook {
                 for (int i = 0; i < customers.size(); i++) {
                     p = (CustomerInfo) customers.get(i);
                     if (sorted_list_totalamounts[j] == p.totalAmount) {
-                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantity + "," + p.totalAmount;
                         pw.println(line);
                     }
                 }
-
             }
             pw.flush();
             pw.close();
@@ -412,14 +412,13 @@ class RecordBook {
         } catch (IOException ioEX) {
             System.out.println(ioEX);
         }
-
     }
 
     // loading Customer record from text file
     void loadCustomers() {
         String tokens[] = null;
         String name, add, ph;
-        String value, tAmount;
+        String value, tAmount, qty;
         try {
             FileReader fr = new FileReader("sorted_customers.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -434,8 +433,8 @@ class RecordBook {
                 tAmount = tokens[5];
                 int regNo = Integer.parseInt(value);
                 int totalAmount = Integer.parseInt(tAmount);
-                int quantitie = Integer.parseInt(qty);
-                CustomerInfo p = new CustomerInfo(regNo, name, add, ph, quantitie, totalAmount);
+                int quantity = Integer.parseInt(qty);
+                CustomerInfo p = new CustomerInfo(regNo, name, add, ph, quantity, totalAmount);
                 customers.add(p);
                 line = br.readLine();
             }

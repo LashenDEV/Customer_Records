@@ -5,7 +5,7 @@ class CustomerInfo {
     String name;
     String address;
     String phoneNumber;
-    int quantitie;
+    int quantity;
     int totalAmount;
 
     CustomerInfo(int r, String n, String a, String p, int q, int tamount) {
@@ -13,12 +13,12 @@ class CustomerInfo {
         name = n;
         address = a;
         phoneNumber = p;
-        quantitie = q;
+        quantity = q;
         totalAmount = tamount;
     }
 
     void display() {
         JOptionPane.showMessageDialog(null, "Reg No: " + regNo + "\nName: " + name + "\nAddress: " + address +
-         "\nPhone no: " + phoneNumber + "\nQuantitie: " + quantitie + "\nTotal Amount: " + totalAmount);
+         "\nPhone no: " + phoneNumber + "\nQuantity: " + quantity + "\nTotal Amount: " + totalAmount);
     }
 }
