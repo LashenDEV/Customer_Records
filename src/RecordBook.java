@@ -156,6 +156,36 @@ class RecordBook {
             System.out.println(ioEX);
         }
 
+        int[] quantities = new int[persons.size()];
+        for (int i = 0; i < quantities.length; i++) {
+            PersonInfo p = (PersonInfo) persons.get(i);
+            quantities[i] = p.quantitie;
+        }
+        
+        int[] sorted_list_qty = is.sort(quantities);
+
+        try {
+            PersonInfo p;
+            String line;
+            FileWriter fw = new FileWriter("sorted_qty_persons.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            for (int j = 0; j < persons.size(); j++) {
+                for (int i = 0; i < persons.size(); i++) {
+                    p = (PersonInfo) persons.get(i);
+                    if (sorted_list_qty[j] == p.quantitie) {
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        pw.println(line);
+                    }
+                }
+
+            }
+            pw.flush();
+            pw.close();
+            fw.close();
+        } catch (IOException ioEX) {
+            System.out.println(ioEX);
+        }
+
     }
 
     // Bubble Sort
@@ -192,6 +222,36 @@ class RecordBook {
             System.out.println(ioEX);
         }
 
+        int[] quantities = new int[persons.size()];
+        for (int i = 0; i < quantities.length; i++) {
+            PersonInfo p = (PersonInfo) persons.get(i);
+            quantities[i] = p.quantitie;
+        }
+        
+        int[] sorted_list_qty = bs.sort(quantities);
+
+        try {
+            PersonInfo p;
+            String line;
+            FileWriter fw = new FileWriter("sorted_qty_persons.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            for (int j = 0; j < persons.size(); j++) {
+                for (int i = 0; i < persons.size(); i++) {
+                    p = (PersonInfo) persons.get(i);
+                    if (sorted_list_qty[j] == p.quantitie) {
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        pw.println(line);
+                    }
+                }
+
+            }
+            pw.flush();
+            pw.close();
+            fw.close();
+        } catch (IOException ioEX) {
+            System.out.println(ioEX);
+        }
+
     }
 
     // Selection Sort
@@ -215,6 +275,36 @@ class RecordBook {
                 for (int i = 0; i < persons.size(); i++) {
                     p = (PersonInfo) persons.get(i);
                     if (sorted_list[j] == p.regNo) {
+                        line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
+                        pw.println(line);
+                    }
+                }
+
+            }
+            pw.flush();
+            pw.close();
+            fw.close();
+        } catch (IOException ioEX) {
+            System.out.println(ioEX);
+        }
+
+        int[] quantities = new int[persons.size()];
+        for (int i = 0; i < quantities.length; i++) {
+            PersonInfo p = (PersonInfo) persons.get(i);
+            quantities[i] = p.quantitie;
+        }
+        
+        int[] sorted_list_qty = ss.sort(quantities);
+
+        try {
+            PersonInfo p;
+            String line;
+            FileWriter fw = new FileWriter("sorted_qty_persons.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            for (int j = 0; j < persons.size(); j++) {
+                for (int i = 0; i < persons.size(); i++) {
+                    p = (PersonInfo) persons.get(i);
+                    if (sorted_list_qty[j] == p.quantitie) {
                         line = p.regNo + "," + p.name + "," + p.address + "," + p.phoneNumber + "," + p.quantitie + "," + p.totalAmount;
                         pw.println(line);
                     }
