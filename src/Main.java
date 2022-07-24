@@ -12,7 +12,7 @@ public class Main {
 
         while (true) {
             input = JOptionPane.showInputDialog(
-                    "Enter 1 to add\n Enter 2 to View All Entries\n Enter 3 to Search\n Enter 4 to delete\n Enter 5 to exit");
+                    "Enter 1 to add\n Enter 2 to View All Entries\n Enter 3 to Search\n Enter 4 to update\n Enter 5 to delete\n Enter 6 to exit");
             ch = Integer.parseInt(input);
 
             switch (ch) {
@@ -27,10 +27,15 @@ public class Main {
                     ab.searchPerson(s);
                     break;
                 case 4:
+                    s = JOptionPane.showInputDialog("Enter reg no to Update");
+                    ab.updatePerson(Integer.parseInt(s));
+                    ab.savePersons();
+                    break;
+                case 5:
                     s = JOptionPane.showInputDialog("Enter name to delete:");
                     ab.deletePerson(s);
                     break;
-                case 5:
+                case 6:
                     ab.savePersons();
                     switch (sel) {
                         case 1:
