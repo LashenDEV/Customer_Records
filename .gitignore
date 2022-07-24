@@ -1,1 +1,5 @@
 out
+customers.txt
+sorted_customers.txt
+sorted_qty_customers.txt
+sorted_totalamount_customers.txt
