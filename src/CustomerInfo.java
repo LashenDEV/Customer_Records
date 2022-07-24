@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-class PersonInfo {
+class CustomerInfo {
     int regNo;
     String name;
     String address;
@@ -8,7 +8,7 @@ class PersonInfo {
     int quantitie;
     int totalAmount;
 
-    PersonInfo(int r, String n, String a, String p, int q, int tamount) {
+    CustomerInfo(int r, String n, String a, String p, int q, int tamount) {
         regNo = r;
         name = n;
         address = a;

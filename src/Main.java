@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        RecordBook ab = new RecordBook();
+        RecordBook cr = new RecordBook();
         String input, s;
         int ch, sel;
 
@@ -17,35 +17,35 @@ public class Main {
 
             switch (ch) {
                 case 1:
-                    ab.addPerson();
+                    cr.addPerson();
                     break;
                 case 2:
-                    ab.viewEntries();
+                    cr.viewEntries();
                     break;
                 case 3:
                     s = JOptionPane.showInputDialog("Enter name to search:");
-                    ab.searchPerson(s);
+                    cr.searchPerson(s);
                     break;
                 case 4:
                     s = JOptionPane.showInputDialog("Enter reg no to Update");
-                    ab.updatePerson(Integer.parseInt(s));
-                    ab.savePersons();
+                    cr.updatePerson(Integer.parseInt(s));
+                    cr.savePersons();
                     break;
                 case 5:
                     s = JOptionPane.showInputDialog("Enter name to delete:");
-                    ab.deletePerson(s);
+                    cr.deletePerson(s);
                     break;
                 case 6:
-                    ab.savePersons();
+                    cr.savePersons();
                     switch (sel) {
                         case 1:
-                            ab.insertionSort();
+                            cr.insertionSort();
                             break;
                         case 2:
-                            ab.bubbleSort();
+                            cr.bubbleSort();
                             break;
                         case 3:
-                            ab.selectionSort();
+                            cr.selectionSort();
                             break;
                         case 4:
                             System.exit(0);
