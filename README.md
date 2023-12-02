@@ -1,14 +1,13 @@
 # Customer_Records System
-
-/**
- * Customer_Records.java
  
- * Description:
- * This Java file contains the implementation for the Customer_Records system,
- * which is designed to manage and store customer information for a business.
- * The system includes functionality for adding new customers, updating existing
- * customer details, deleting customers, and retrieving customer information.
- * Additionally, it provides methods for generating reports and analyzing customer data.
+  Customer_Records.java
+ 
+  Description:
+   This Java file contains the implementation for the Customer_Records system,
+   which is designed to manage and store customer information for a business.
+   The system includes functionality for adding new customers, updating existing
+   customer details, deleting customers, and retrieving customer information.
+   Additionally, it provides methods for generating reports and analyzing customer data.
 
 
  * Class Structure:
